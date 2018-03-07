@@ -1,16 +1,23 @@
 {% extends "pyramid_blogr:templates/layout.jinja2" %}
+<head>
+<title>{{ entry.title }}</title>
+</head>
+
 
 {% block content %}
     <h1>{{ entry.title }}</h1>
     <hr/>
-    <p>{{ entry.body }}</p>
+    <p><h2>Объем {{ entry.amount }} по цене {{ entry.price }}</h2></p>
+    <p><h3>Условия поставки: </h3>{{ entry.delivery_terms}}
+    {{ entry.address_delivery}}</p>
+    <p><h4>Детали и подробности: </h4>{{ entry.body }}</p>
+    <p><h4>Статус по НДС: </h4>{{ entry.vat }}</p>
     <hr/>
-    <p>Created <strong title="{{ entry.created }}">
-        {{ entry.created_in_words }}</strong> ago</p>
+    <p>Создано <strong title="{{ entry.created }}">
+        {{ entry.created_in_words }}</strong> назад</p>
 
-    <p><a href="{{ request.route_url('home') }}">Go Back</a> ::
+    <p><a href="{{ request.route_url('home') }}">На главную</a> ::
         <a href="{{ request.route_url('blog_action', action='edit',
-        _query={'id':entry.id}) }}">Edit entry</a>
-
+        _query={'id':entry.id}) }}">Редактировать</a>
     </p>
 {% endblock %}

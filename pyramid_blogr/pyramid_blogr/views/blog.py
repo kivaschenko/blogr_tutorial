@@ -3,6 +3,8 @@ from pyramid.httpexceptions import HTTPNotFound, HTTPFound
 from ..models.blog_record import BlogRecord
 from ..services.blog_record import BlogRecordService
 from ..forms import BlogCreateForm, BlogUpdateForm
+# add user info
+from ..services.user import UserService
 
 
 @view_config(route_name='blog',

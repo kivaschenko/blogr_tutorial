@@ -12,10 +12,18 @@ from webhelpers2.date import distance_of_time_in_words #<- human friendly dates
 
 
 class BlogRecord(Base):
+    """ The space of blog record names to database table. """
     __tablename__ = 'entries'
     id = Column(Integer, primary_key=True)
-    title = Column(Unicode(255), unique=True, nullable=False)
-    body = Column(UnicodeText, default=u'')
+    title = Column(Unicode(60), nullable=False) # <- Sale or Buy Wheat grade III
+    amount = Column(Unicode(10), nullable=False) # <- 500 (T)
+    price = Column(Unicode(10), nullable=False)  # <- 4750 (грн.)
+    vat = Column(Unicode(30)) # <- First trade agent
+    # delivery terms: CPT
+    delivery_terms = Column(Unicode(3))
+    # grain terminal "MSP NICK-TERA" LLC port "Nikolaev MTP"
+    address_delivery = Column(UnicodeText(155), nullable=False, default=u'')
+    body = Column(UnicodeText(255), default=u'') # <-  details
     created = Column(DateTime, default=datetime.datetime.utcnow)
 
     @property

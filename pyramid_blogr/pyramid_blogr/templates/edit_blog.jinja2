@@ -6,29 +6,77 @@
             {{ form.id() }}
         {% endif %}
 
+        <br />
+
+        {# Input title #}
         {% for error in form.title.errors %}
             <div class="error">{{ error }}</div>
         {% endfor %}
 
         <div class="form-group">
             <label for="title">{{ form.title.label }}</label>
-            {{ form.title(class_='form-control') }}
+            {{ form.title(class_='form-control')}}
+        </div>
+
+        {# Input amount #}
+        {% for error in form.amount.errors %}
+            <div class="error">{{error}}</div>
+        {% endfor %}
+        <div class="form-group">
+            <label for="amount">{{ form.amount.label}}</label>
+            {{ form.amount(class_='form-control') }}
+        </div>
+
+        {# Input price #}
+        {% for error in form.price.errors %}
+            <div class="error">{{error}}</div>
+        {% endfor %}
+        <div class="form-group">
+            <label for="price">{{ form.price.label}}</label>
+            {{ form.price(class_='form-control') }}
+        </div>
+
+        {# Input VAT details #}
+        {% for error in form.vat.errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
+        <div class="form-group">
+            <label for="vat">{{ form.vat.label }}</label>
+            {{ form.vat(class_='form-control') }}
+        </div>
+
+        {# Input delivery terms #}
+        {% for error in form.delivery_terms.errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
+        <div class="form-group">
+            <label for="delivery_terms">{{ form.delivery_terms.label }}</label>
+            {{ form.delivery_terms(class_='form-control') }}
+        </div>
+
+        {# Address of delivery #}
+        {% for error in form.address_delivery.errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
+        <div class="form-group">
+            <label for="address_delivery">{{ form.address_delivery.label }}</label>
+            {{ form.address_delivery(class_='form-control') }}
         </div>
 
         {% for error in form.body.errors %}
             <div class="error">{{ error }}</div>
         {% endfor %}
-
         <div class="form-group">
             <label for="body">{{ form.body.label }}</label>
             {{ form.body(class_='form-control') }}
         </div>
+
         <div class="form-group">
             <label></label>
-            <button type="submit" class="btn btn-default">Submit</button>
+            <button type="submit" class="btn btn-default">Отправить</button>
         </div>
 
 
     </form>
-    <p><a href="{{ request.route_url('home') }}">Go Back</a></p>
+    <p><a href="{{ request.route_url('home') }}">На главную</a></p>
 {% endblock %}
