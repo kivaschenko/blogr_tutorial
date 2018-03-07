@@ -1,9 +1,9 @@
-{% extends "pyramid_blogr:templates/layout.jinja2" %}
+
 <head>
-<title>{{ entry.title }}</title>
+<title>{{ entry.title }} {{ entry.address_delivery }}</title>
 </head>
 
-
+{% extends "pyramid_blogr:templates/layout.jinja2" %}
 {% block content %}
     <h1>{{ entry.title }}</h1>
     <hr/>
@@ -13,8 +13,8 @@
     <p><h4>Детали и подробности: </h4>{{ entry.body }}</p>
     <p><h4>Статус по НДС: </h4>{{ entry.vat }}</p>
     <hr/>
-    <p>Создано <strong title="{{ entry.created }}">
-        {{ entry.created_in_words }}</strong> назад</p>
+    <p>Created <strong title="{{ entry.created }}">
+        {{ entry.created_in_words }}</strong> ago</p>
 
     <p><a href="{{ request.route_url('home') }}">На главную</a> ::
         <a href="{{ request.route_url('blog_action', action='edit',

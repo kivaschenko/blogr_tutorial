@@ -30,11 +30,11 @@ class BlogCreateForm(Form):
                                  filters=[strip_filter])
     address_delivery = TextAreaField('Адрес или место поставки \
 (область, район, насел пункт, хозяйство/элеватор/порт-терминал/переход и т.п.)',
-                                    [validators.length(min=30)],
+                                    [validators.length(min=30, max=155)],
                                     filters=[strip_filter])
     body = TextAreaField('Детали и подробности \
 (протеин-42%, влажность-5%, любая форма расчета...)',
-                        [validators.length(max=155)],
+                        [validators.length(max=255)],
                         filters=[strip_filter])
 
 class BlogUpdateForm(BlogCreateForm):
@@ -42,6 +42,6 @@ class BlogUpdateForm(BlogCreateForm):
 
 
 class RegistrationForm(Form):
-    username = StringField('Username', [validators.Length(min=1, max=255)],
+    username = StringField('Имя пользователя', [validators.Length(min=1, max=255)],
                            filters=[strip_filter])
-    password = PasswordField('Password', [validators.Length(min=3)])
+    password = PasswordField('Пароль (минимум 4 символа)', [validators.Length(min=4)])
